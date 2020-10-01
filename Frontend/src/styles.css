@@ -1,0 +1,24 @@
+Home{
+margin-top: auto;
+margin-left: auto;
+margin-right: auto;
+
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+nav{
+  background-color: #ffbc04;
+}
+
+card{
+  width: 15rem;
+}
+
+h1{
+text-align: center;
+font-family: Segoe UI Semibold
+}
