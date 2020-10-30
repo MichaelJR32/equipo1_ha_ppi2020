@@ -15,7 +15,7 @@ export default class PreSenalesRGL extends  Component{
        />
        </div>
        <br/>
-       <Link to='/SenalesP3' class="btn btn-primary">Siguiente</Link>
+       <Link to='/SenalesP3' className="btn btn-primary">Siguiente</Link>
        </h1>
        
     );

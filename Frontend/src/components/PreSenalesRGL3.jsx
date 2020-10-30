@@ -15,7 +15,7 @@ export default class PreSenalesRGL3 extends  Component{
        <br/>
        <p>Su transgresión constituye infracción a las normas del tránsito. deben ser colocadas en el lugar donde se requiera establecer la regulación, y si las condiciones del tránsito o de la vía lo hacen necesario, pueden ser repetidas al costado izquierdo, a fin de garantizar su observación y respeto. (teoria señales reglamentarias)</p>
        <br/>
-       <Link to='/QuizReglamentaria' class="btn btn-primary">Siguiente</Link>
+       <Link to='/QuizReglamentaria' className="btn btn-primary">Siguiente</Link>
        </div>
        
     );

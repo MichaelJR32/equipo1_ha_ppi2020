@@ -4,7 +4,7 @@ class Solution extends Component{
 
   render() {
     const {question} = this.props;
-    const correctAnswer = question.choices.find(choice => question.correct == choice.id);
+    const correctAnswer = question.choices.find(choice => question.correct === choice.id);
     return(
       <div className="panel panel-default">
         <div className="panel-heading">

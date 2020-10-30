@@ -17,7 +17,7 @@ export default class PreSenalesPRV2 extends  Component{
        <br/>
        <p>Estas señales requieren que los conductores tomen las precauciones del caso ya sea reduciendo la velocidad o realizando maniobras necesarias para su propia seguridad, la del resto de los vehículos y las de los peatones. (teoria señales preventivas)</p>
        <br/>
-       <Link to='/QuizPreventivas' class="btn btn-primary">Siguiente</Link>
+       <Link to='/QuizPreventivas' className="btn btn-primary">Siguiente</Link>
        </div>
        
     );

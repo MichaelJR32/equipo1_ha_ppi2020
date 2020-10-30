@@ -10,7 +10,7 @@ class Results extends Component{
     } else if (percent < 80 && percent > 60) {
       var message = 'Lo hiciste bien!';
     } else {
-      var message = 'Trata demejorar!';
+      var message = 'Trata de mejorar!';
     }
     return(
       <div>
