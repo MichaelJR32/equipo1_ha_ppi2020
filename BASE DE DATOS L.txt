@@ -1,0 +1,208 @@
+﻿-- phpMyAdmin SQL Dump
+-- version 4.8.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: bnbibuckuaz4sr9y0biy-mysql.services.clever-cloud.com:3306
+-- Generation Time: Oct 30, 2020 at 06:25 PM
+-- Server version: 8.0.15-5
+-- PHP Version: 7.2.34
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `bnbibuckuaz4sr9y0biy`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `certificacion`
+--
+
+CREATE TABLE `certificacion` (
+  `cod_certificacion` varchar(10) NOT NULL,
+  `progreso` varchar(50) NOT NULL,
+  `homologacion del transito` varchar(50) NOT NULL,
+  `id` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `clases`
+--
+
+CREATE TABLE `clases` (
+  `clases` varchar(10) NOT NULL,
+  `internet` varchar(50) NOT NULL,
+  `cod_clase` varchar(50) NOT NULL,
+  `señales de transito` varchar(50) NOT NULL,
+  `tutores` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `estudiantes`
+--
+
+CREATE TABLE `estudiantes` (
+  `cod_estidiantes` varchar(10) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `edad` varchar(50) NOT NULL,
+  `numero id` varchar(50) DEFAULT NULL,
+  `pais` varchar(50) DEFAULT NULL,
+  `ciudad` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `modulos`
+--
+
+CREATE TABLE `modulos` (
+  `codigOficina` varchar(10) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `cod_modulo` varchar(50) NOT NULL,
+  `señales preventivas` varchar(50) NOT NULL,
+  `señales reglamentarias` varchar(50) DEFAULT NULL,
+  `telefono` varchar(50) DEFAULT NULL,
+  `pais` varchar(50) NOT NULL,
+  `ciudad` varchar(15) NOT NULL,
+  `direccion` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `señales de transito`
+--
+
+CREATE TABLE `señales de transito` (
+  `señalesdetransito` varchar(10) NOT NULL,
+  `numero` varchar(50) NOT NULL,
+  `cod_señales T` varchar(50) NOT NULL,
+  `talleres` varchar(50) NOT NULL,
+  `señales preventivas y reglamentarias` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temas`
+--
+
+CREATE TABLE `temas` (
+  `temas` varchar(10) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `bibliografia temas` varchar(50) NOT NULL,
+  `examenes` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `videos educativos viales`
+--
+
+CREATE TABLE `videos educativos viales` (
+  `videoseducativos` varchar(10) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `url` varchar(50) NOT NULL,
+  `videos` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `certificacion`
+--
+ALTER TABLE `certificacion`
+  ADD PRIMARY KEY (`cod_certificacion`);
+
+--
+-- Indexes for table `clases`
+--
+ALTER TABLE `clases`
+  ADD PRIMARY KEY (`clases`);
+
+--
+-- Indexes for table `estudiantes`
+--
+ALTER TABLE `estudiantes`
+  ADD PRIMARY KEY (`cod_estidiantes`),
+  ADD KEY `fk_clases_estudiantes` (`numero id`);
+
+--
+-- Indexes for table `modulos`
+--
+ALTER TABLE `modulos`
+  ADD PRIMARY KEY (`codigOficina`),
+  ADD KEY `fk_videos educativos viales_modulos` (`cod_modulo`);
+
+--
+-- Indexes for table `señales de transito`
+--
+ALTER TABLE `señales de transito`
+  ADD PRIMARY KEY (`señalesdetransito`),
+  ADD KEY `fk_clases_señales de transito` (`cod_señales T`);
+
+--
+-- Indexes for table `temas`
+--
+ALTER TABLE `temas`
+  ADD PRIMARY KEY (`temas`);
+
+--
+-- Indexes for table `videos educativos viales`
+--
+ALTER TABLE `videos educativos viales`
+  ADD PRIMARY KEY (`videoseducativos`),
+  ADD KEY `fk_temas_videos educativos viales` (`nombre`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `estudiantes`
+--
+ALTER TABLE `estudiantes`
+  ADD CONSTRAINT `fk_certificacion_estudiantes` FOREIGN KEY (`cod_estidiantes`) REFERENCES `certificacion` (`cod_certificacion`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_clases_estudiantes` FOREIGN KEY (`numero id`) REFERENCES `estudiantes` (`cod_estidiantes`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+--
+-- Constraints for table `modulos`
+--
+ALTER TABLE `modulos`
+  ADD CONSTRAINT `fk_videos educativos viales_modulos` FOREIGN KEY (`cod_modulo`) REFERENCES `videos educativos viales` (`videoseducativos`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+--
+-- Constraints for table `señales de transito`
+--
+ALTER TABLE `señales de transito`
+  ADD CONSTRAINT `fk_clases_señales de transito` FOREIGN KEY (`cod_señales T`) REFERENCES `clases` (`clases`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+--
+-- Constraints for table `videos educativos viales`
+--
+ALTER TABLE `videos educativos viales`
+  ADD CONSTRAINT `fk_temas_videos educativos viales` FOREIGN KEY (`nombre`) REFERENCES `temas` (`temas`) ON DELETE RESTRICT ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
